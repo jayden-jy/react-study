@@ -1,13 +1,22 @@
+import { useState } from "react"; // 리액트 훅
+
 import { CORE_CONCEPTS } from "./data.js";
 import Header from "./components/Header/Header.jsx";
 import CoreConcept from "./components/CoreConcept.jsx";
 import TabButton from "./components/TabButton.jsx";
 
 function App() {
+  //let tabContent = "please click a button"; // 일반적인 변수로는 UI를 업데이트를 할 수 없음
+  const [ selectedTopic, setSelectedTopic ] = useState('please click a button');
+
   // selectedButton 커스텀식별자와 커스텀매개변수를 얻음
   function handleSelect(selectedButton) {
     // selectedButton => 'components', 'jsx', 'props', 'state'
-    console.log(selectedButton);
+    // console.log(selectedButton);
+
+    // tabContent = selectedButton; UI가 업데이트 안됨
+    setSelectedTopic(selectedButton);
+    console.log(selectedTopic);
   }
 
   return (
@@ -36,7 +45,7 @@ function App() {
             <TabButton onSelect={() => handleSelect('props')}>Props</TabButton>
             <TabButton onSelect={() => handleSelect('state')}>State</TabButton>
           </menu>
-          dynamic content
+          {selectedTopic}
         </section>
         <h2>Time to get started!</h2>
       </main>
