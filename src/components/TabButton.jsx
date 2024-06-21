@@ -1,10 +1,9 @@
-export default function TabButton({ children }) {
-  function handleClick() {
-    console.log("Hello World");
-  }
+// children은 리액트 리능 고유명
+// onSelect는 임의로 이름변경가능 앞에 on을 붙이는게 자주쓰이는 규칙중에 하나
 
+export default function TabButton({ children, onSelect }) {
   return (
-    <li><button onClick={handleClick}>{children}</button></li>
+    <li><button onClick={onSelect}>{children}</button></li>
   );
 }
 

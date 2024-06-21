@@ -4,6 +4,12 @@ import CoreConcept from "./components/CoreConcept.jsx";
 import TabButton from "./components/TabButton.jsx";
 
 function App() {
+  // selectedButton 커스텀식별자와 커스텀매개변수를 얻음
+  function handleSelect(selectedButton) {
+    // selectedButton => 'components', 'jsx', 'props', 'state'
+    console.log(selectedButton);
+  }
+
   return (
     <div>
       <Header />
@@ -25,11 +31,12 @@ function App() {
           <h2>Examples</h2>
           <menu>
             {/* <TabButton label="Components" /> label 형식 */}
-            <TabButton>Components</TabButton>
-            <TabButton>JSX</TabButton>
-            <TabButton>Props</TabButton>
-            <TabButton>State</TabButton>
+            <TabButton onSelect={() => handleSelect('components')}>Components</TabButton>
+            <TabButton onSelect={() => handleSelect('jsx')}>JSX</TabButton>
+            <TabButton onSelect={() => handleSelect('props')}>Props</TabButton>
+            <TabButton onSelect={() => handleSelect('state')}>State</TabButton>
           </menu>
+          dynamic content
         </section>
         <h2>Time to get started!</h2>
       </main>
