@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "homepage": "https://jayden-jy.github.io/react-study/"
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "gh-pages": "^6.1.1",
@@ -16,5 +15,6 @@
     "vite": "^4.3.9"
   },
   "keywords": [],
-  "description": ""
+  "description": "",
+  "homepage": "https://jayden-jy.github.io/react-study/"
 }
