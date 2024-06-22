@@ -8,7 +8,7 @@ import { EXAMPLES } from "./data.js"
 
 function App() {
   //let tabContent = "please click a button"; // 일반적인 변수로는 UI를 업데이트를 할 수 없음
-  const [ selectedTopic, setSelectedTopic ] = useState('components');
+  const [selectedTopic, setSelectedTopic] = useState();
 
   // selectedButton 커스텀식별자와 커스텀매개변수를 얻음
   function handleSelect(selectedButton) {
@@ -18,6 +18,19 @@ function App() {
     // tabContent = selectedButton; UI가 업데이트 안됨
     setSelectedTopic(selectedButton);
     // console.log(selectedTopic);
+  }
+
+  let tabContent = <p>주제를 선택해주세요.</p>;
+  if (selectedTopic) {
+    tabContent = (
+      <div id="tab-content">
+        <h3>{EXAMPLES[selectedTopic].title}</h3>
+        <p>{EXAMPLES[selectedTopic].description}</p>
+        <pre>
+          <code>{EXAMPLES[selectedTopic].code}</code>
+        </pre>
+      </div>
+    );
   }
 
   return (
@@ -47,13 +60,34 @@ function App() {
             <TabButton onSelect={() => handleSelect('state')}>State</TabButton>
           </menu>
           {/* {selectedTopic} */}
-          <div id="tab-content">
-            <h3>{EXAMPLES[selectedTopic].title}</h3>
-            <p>{EXAMPLES[selectedTopic].description}</p>
-            <pre>
-              <code>{EXAMPLES[selectedTopic].code}</code>
-            </pre>
-          </div>
+
+          {/* 삼항연산자
+          {!selectedTopic ? (
+            <p>주제를 선택해주세요.</p>
+          ) : (
+            <div id="tab-content">
+              <h3>{EXAMPLES[selectedTopic].title}</h3>
+              <p>{EXAMPLES[selectedTopic].description}</p>
+              <pre>
+                <code>{EXAMPLES[selectedTopic].code}</code>
+              </pre>
+            </div>
+          )} */}
+
+          {/* &&을 이용한 속임수 코드간결하게 변경 
+          {!selectedTopic && <p>주제를 선택해주세요.</p>}
+          {selectedTopic && (
+            <div id="tab-content">
+              <h3>{EXAMPLES[selectedTopic].title}</h3>
+              <p>{EXAMPLES[selectedTopic].description}</p>
+              <pre>
+                <code>{EXAMPLES[selectedTopic].code}</code>
+              </pre>
+            </div>
+          )} */}
+
+          {/* 변수를 이용한 방법 */}
+          {tabContent}
         </section>
         <h2>Time to get started!</h2>
       </main>
