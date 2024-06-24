@@ -1,6 +1,7 @@
 import { useState } from "react"; // 리액트 훅
 
 import TabButton from "./TabButton.jsx";
+import Section from "./section.jsx";
 import { EXAMPLES } from "../data";
 
 export default function Examples() {
@@ -31,14 +32,13 @@ export default function Examples() {
   }
 
   return (
-    <section id="examples">
-      <h2>Examples</h2>
+    <Section title="Examples" id="examples">
       <menu>
         {/* <TabButton label="Components" /> label 형식 */}
-        <TabButton isSelected={selectedTopic === 'components'} onSelect={() => handleSelect('components')}>Components</TabButton>
-        <TabButton isSelected={selectedTopic === 'jsx'} onSelect={() => handleSelect('jsx')}>JSX</TabButton>
-        <TabButton isSelected={selectedTopic === 'props'} onSelect={() => handleSelect('props')}>Props</TabButton>
-        <TabButton isSelected={selectedTopic === 'state'} onSelect={() => handleSelect('state')}>State</TabButton>
+        <TabButton isSelected={selectedTopic === 'components'} onClick={() => handleSelect('components')}>Components</TabButton>
+        <TabButton isSelected={selectedTopic === 'jsx'} onClick={() => handleSelect('jsx')}>JSX</TabButton>
+        <TabButton isSelected={selectedTopic === 'props'} onClick={() => handleSelect('props')}>Props</TabButton>
+        <TabButton isSelected={selectedTopic === 'state'} onClick={() => handleSelect('state')}>State</TabButton>
       </menu>
       {/* {selectedTopic} */}
 
@@ -69,6 +69,6 @@ export default function Examples() {
 
       {/* 변수를 이용한 방법 */}
       {tabContent}
-    </section>
+    </Section>
   )
 }
