@@ -2,6 +2,7 @@ import { useState } from "react"; // 리액트 훅
 
 import TabButton from "./TabButton.jsx";
 import Section from "./section.jsx";
+import Tabs from "./Tabs.jsx";
 import { EXAMPLES } from "../data";
 
 export default function Examples() {
@@ -33,42 +34,49 @@ export default function Examples() {
 
   return (
     <Section title="Examples" id="examples">
-      <menu>
-        {/* <TabButton label="Components" /> label 형식 */}
-        <TabButton isSelected={selectedTopic === 'components'} onClick={() => handleSelect('components')}>Components</TabButton>
-        <TabButton isSelected={selectedTopic === 'jsx'} onClick={() => handleSelect('jsx')}>JSX</TabButton>
-        <TabButton isSelected={selectedTopic === 'props'} onClick={() => handleSelect('props')}>Props</TabButton>
-        <TabButton isSelected={selectedTopic === 'state'} onClick={() => handleSelect('state')}>State</TabButton>
-      </menu>
-      {/* {selectedTopic} */}
+      <Tabs 
+        // buttonsContainer="menu"
+        buttons={
+          <>
+          {/* <TabButton label="Components" /> label 형식 */}
+          <TabButton isSelected={selectedTopic === 'components'} onClick={() => handleSelect('components')}>Components</TabButton>
+          <TabButton isSelected={selectedTopic === 'jsx'} onClick={() => handleSelect('jsx')}>JSX</TabButton>
+          <TabButton isSelected={selectedTopic === 'props'} onClick={() => handleSelect('props')}>Props</TabButton>
+          <TabButton isSelected={selectedTopic === 'state'} onClick={() => handleSelect('state')}>State</TabButton>
+          </>
+        }
+      >
 
-      {/* 삼항연산자
-      {!selectedTopic ? (
-        <p>주제를 선택해주세요.</p>
-      ) : (
-        <div id="tab-content">
-          <h3>{EXAMPLES[selectedTopic].title}</h3>
-          <p>{EXAMPLES[selectedTopic].description}</p>
-          <pre>
-            <code>{EXAMPLES[selectedTopic].code}</code>
-          </pre>
-        </div>
-      )} */}
+        {/* {selectedTopic} */}
 
-      {/* &&을 이용한 속임수 코드간결하게 변경 
-      {!selectedTopic && <p>주제를 선택해주세요.</p>}
-      {selectedTopic && (
-        <div id="tab-content">
-          <h3>{EXAMPLES[selectedTopic].title}</h3>
-          <p>{EXAMPLES[selectedTopic].description}</p>
-          <pre>
-            <code>{EXAMPLES[selectedTopic].code}</code>
-          </pre>
-        </div>
-      )} */}
+        {/* 삼항연산자
+        {!selectedTopic ? (
+          <p>주제를 선택해주세요.</p>
+        ) : (
+          <div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>{EXAMPLES[selectedTopic].code}</code>
+            </pre>
+          </div>
+        )} */}
 
-      {/* 변수를 이용한 방법 */}
-      {tabContent}
+        {/* &&을 이용한 속임수 코드간결하게 변경 
+        {!selectedTopic && <p>주제를 선택해주세요.</p>}
+        {selectedTopic && (
+          <div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>{EXAMPLES[selectedTopic].code}</code>
+            </pre>
+          </div>
+        )} */}
+
+        {/* 변수를 이용한 방법 */}
+        {tabContent}
+      </Tabs>
     </Section>
   )
 }
